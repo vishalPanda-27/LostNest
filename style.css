@@ -1,0 +1,308 @@
+body{
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+}
+footer {
+    background: #b4dbf7;
+    text-align: center;
+    padding: 10px;
+    color: #333;
+    margin-top: auto; /* pushes footer down */
+}
+/* Main container */
+.form-container {
+    max-width: 700px;
+    margin: 30px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Heading */
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #222;
+}
+
+/* Row styling */
+.form-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.form-row input,
+.form-row textarea {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+/* Textarea */
+textarea {
+    width: 100%;
+    height: 120px;
+    resize: vertical;
+    margin-bottom: 15px;
+}
+
+/* Photo upload boxes */
+.photo-upload {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.photo-box {
+    flex: 1;
+    padding: 20px;
+    border: 2px dashed #007acc;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 14px;
+    color: #007acc;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.photo-box:hover {
+    background: #f0f8ff;
+}
+
+/* Submit button */
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background: #007acc;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: #005f99;
+}
+/* =========================
+   LOST ITEMS FORM PAGE CSS
+   ========================= */
+
+        /* Container */
+        .form-container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Title */
+        .form-container h2 {
+            text-align: center;
+            color: #004A99;
+            /* dark blue */
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        /* Form Rows */
+        .form-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+
+        .form-row input {
+            flex: 1;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #aaa;
+            font-size: 14px;
+            transition: border 0.3s;
+        }
+
+        .form-row input:focus {
+            border-color: #1E64C8;
+            outline: none;
+        }
+
+        /* Photo Upload */
+        .photo-upload {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .photo-box {
+            flex: 1;
+            border: 2px dashed #004A99;
+            border-radius: 8px;
+            text-align: center;
+            padding: 40px 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            color: #004A99;
+            font-weight: bold;
+        }
+
+        .photo-box:hover {
+            background: #EAF4FB;
+            border-color: #1E64C8;
+        }
+
+        /* Textarea */
+        textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #aaa;
+            resize: vertical;
+            font-size: 14px;
+            transition: border 0.3s;
+        }
+
+        textarea:focus {
+            border-color: #1E64C8;
+            outline: none;
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            display: block;
+            margin: 20px auto 0;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            background: #004A99;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-weight: bold;
+        }
+
+        .submit-btn:hover {
+            background: #1E64C8;
+        }
+
+        /* Section headings inside form */
+        .form-container h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #004A99;
+        }
+
+        /* File input */
+        input[type="file"] {
+            border: 1px solid #aaa;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 14px;
+            background: #f9f9f9;
+            cursor: pointer;
+        }
+
+        input[type="file"]:hover {
+            border-color: #1E64C8;
+        }
+
+        /* Custom File Upload Button */
+        .custom-file-upload {
+            display: inline-block;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: 2px solid #004A99;
+            border-radius: 6px;
+            background: #EAF4FB;
+            color: #004A99;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .custom-file-upload:hover {
+            background: #1E64C8;
+            color: white;
+        }
+
+        .custom-file-upload input[type="file"] {
+            display: none;
+            /* hide the real file input */
+        }
+
+        #file-name {
+            margin-left: 15px;
+            font-size: 14px;
+            color: #333;
+            font-style: italic;
+        }
+        /* Details Page Styling */
+.details-container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.details-container h2 {
+    text-align: center;
+    color: #004A99;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.details-container p {
+    margin: 8px 0;
+    font-size: 15px;
+    color: #333;
+}
+
+.details-container b {
+    color: #004A99;
+}
+
+.details-container .photos {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.details-container .photos img {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid #004A99;
+}
+
+.back-btn {
+    display: block;
+    margin: 30px auto 0;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    background: #004A99;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-weight: bold;
+}
+
+.back-btn:hover {
+    background: #1E64C8;
+}

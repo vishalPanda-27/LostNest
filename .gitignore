@@ -1,0 +1,9 @@
+*.pt
+*.sql
+uploads/
+__pycache__/
+*.pyc
+*.log
+.env
+.vscode/
+lostnest/

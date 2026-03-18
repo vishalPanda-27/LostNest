@@ -1,0 +1,15 @@
+[Unit]
+Description=LostNest AI Matcher Service (YOLOv8)
+After=network.target mysql.service
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/lampp/htdocs/lostnest
+Environment="PATH=/opt/lampp/htdocs/lostnest/lostnest/bin:/usr/local/bin:/usr/bin:/bin"
+ExecStart=/opt/lampp/htdocs/lostnest/lostnest/bin/python3 /opt/lampp/htdocs/lostnest/ai_matcher.py
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

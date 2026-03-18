@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lost Nest - Login & Signup</title>
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+  <script src="js/jquery-ui.js"></script>
+  <script src="js/jquery-3.7.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(90deg, #e2e2e2, #c9d6ff);
+    }
+
+    .container {
+      width: 800px;
+      height: 500px;
+      background: #fff;
+      display: flex;
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 0 30px rgba(0, 0, 0, .2);
+      transition: 1s ease-in-out;
+    }
+
+    /* Left panel */
+    .left-panel {
+      width: 35%;
+      background: #eee;
+      clip-path: polygon(0 0, 80% 0, 60% 100%, 0% 100%);
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding-top: 40px;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Form container */
+    .form-box {
+      position: absolute;
+      right: 0;
+      width: 65%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      transition: .6s ease-in-out;
+    }
+
+    .form-box form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .form-box h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .form-box h2 {
+      font-size: 18px;
+      margin: 0 0 20px;
+      font-weight: normal;
+    }
+
+    .input-box {
+      width: 80%;
+      margin: 8px 0;
+      position: relative;
+    }
+
+    .input-box input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #aaa;
+      font-size: 16px;
+    }
+
+    .btn {
+      margin-top: 15px;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 10px;
+      background: #7494ec;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #5b7be0;
+    }
+
+    /* Positioning for login/signup forms */
+    .form-box.login {
+      right: 0;
+    }
+
+    .form-box.signup {
+      right: -65%;
+      opacity: 0;
+    }
+
+    .container.active .form-box.login {
+      right: 65%;
+      opacity: 0;
+    }
+
+    .container.active .form-box.signup {
+      right: 0;
+      opacity: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="alert-container" style="position: absolute; top: 20px; width: 100%; text-align: center; z-index: 1000;">
+  </div>
+  <div class="container">
+    <!-- Left angled panel -->
+    <div class="left-panel">
+      <img src="images/logo.png" alt="Logo">
+    </div>
+
+    <!-- Login form -->
+    <div class="form-box login">
+      <form onsubmit="event.preventDefault(); signin();">
+        <h1>Lost Nest</h1>
+        <h2>Sign In</h2>
+        <div class="input-box">
+          <input type="text" id="login_username" placeholder="Username" required>
+        </div>
+        <div class="input-box">
+          <input type="password" id="login_password" placeholder="Password" required>
+        </div>
+        <button type="submit" class="btn">Login</button>
+        <p style="margin-top:15px;">Don't have an account?
+          <button type="button" class="btn register-btn">Sign Up</button>
+        </p>
+      </form>
+    </div>
+
+    <!-- Signup form -->
+    <div class="form-box signup" style="padding-top: 0px;">
+      <form id="reg">
+        <h1>Lost Nest Sign Up</h1>
+        <div class="input-box">
+          <input type="text" name="full_name" id="signup_fullname" title="Enter the FullName" placeholder="Full Name"
+            required>
+        </div>
+        <div class="input-box">
+          <input type="date" name="dob" id="signup_dob" value="2025-01-23" title="Date of Bith"
+            placeholder="Date of Birth" required>
+        </div>
+        <div class="input-box">
+          <input type="text" name="username" id="signup_username" title="UserName" value="u" placeholder="Username"
+            required>
+        </div>
+        <div class="input-box">
+          <input type="password" name="password" id="signup_password" title="Password must be given" value=""
+            placeholder="Password" required>
+        </div>
+        <div class="input-box">
+          <input type="password" id="confirm_password" title="It must be same as Password" value=""
+            placeholder="Confirm Password" required>
+        </div>
+        <button type="button" id="btnreg" class="btn" onclick="signup()">Register</button>
+        <p style="margin-top:15px;">Already have an account?
+          <button type="button" class="btn login-btn">Sign In</button>
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const container = document.querySelector('.container');
+    const registerBtn = document.querySelector('.register-btn');
+    const loginBtn = document.querySelector('.login-btn');
+
+    registerBtn.addEventListener('click', () => container.classList.add('active'));
+    loginBtn.addEventListener('click', () => container.classList.remove('active'));
+  </script>
+  <script>
+    function signin() {
+      let data = new FormData();
+      data.append("action", "signin");
+      data.append("username", $("#login_username").val());
+      data.append("password", $("#login_password").val());
+
+      $.ajax({
+        url: "ajax.php",
+        type: "POST",
+        data: data,
+        contentType: false,
+        processData: false,
+        success: function (response) {
+          let obj = JSON.parse(response);
+          showAlert(obj.success, obj.message);
+
+          if (obj.success) {
+            setTimeout(() => { window.location.href = "index.php"; }, 1500);
+          }
+        }
+      });
+    }
+  </script>
+  <script>
+    function signup() {
+    let pass = $("#signup_password").val();
+    let cpass = $("#confirm_password").val();
+
+    if (pass !== cpass) {
+        showAlert(false, "Passwords do not match!");
+        return;
+    }
+
+    let data = new FormData();
+    data.append("action", "signup");
+    data.append("full_name", $("#signup_fullname").val());
+    data.append("dob", $("#signup_dob").val());
+    data.append("username", $("#signup_username").val());
+    data.append("password", pass);
+
+    console.log("Sending signup request..."); // debug
+
+    $.ajax({
+        url: "ajax.php",
+        type: "POST",
+        data: data,
+        contentType: false,
+        processData: false,
+        success: function (response) {
+            console.log("Server response:", response); // debug
+            try {
+                let obj = JSON.parse(response);
+                showAlert(obj.success, obj.message);
+                if (obj.success) {
+                    setTimeout(() => {
+                        $(".container").removeClass("active");
+                    }, 1500);
+                }
+            } catch (e) {
+                console.error("JSON parse error:", e, response);
+                showAlert(false, "Server returned invalid response");
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error("AJAX error:", status, error);
+            showAlert(false, "AJAX request failed");
+        }
+    });
+}
+
+    // Bootstrap-style alert generator
+    function showAlert(success, message) {
+      let alertClass = success ? "alert-success" : "alert-danger";
+      $("#alert-container").html(`
+        <div class="alert ${alertClass} alert-dismissible fade show" role="alert" style="display:inline-block;">
+            <strong>${message}</strong>
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+        </div>
+    `); 
+    }
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+flask==3.0.0
+ultralytics==8.1.0
+opencv-python==4.9.0.80
+numpy==1.26.3
+scikit-learn==1.4.0
+mysql-connector-python==8.2.0
+pillow==10.2.0
+torch>=2.0.0
+torchvision>=0.15.0
+requests>=2.31.0
