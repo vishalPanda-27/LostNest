@@ -5,7 +5,6 @@ LostNest is a fully functional lost and found image matching system using YOLOv8
 
 ## Features
 ✅ **AI-Powered Image Matching** - YOLOv8 deep learning model
-✅ **Automatic NFT ID Generation** - Unique blockchain identifiers
 ✅ **Smart Feature Extraction** - Object detection, color histograms, edge detection
 ✅ **Real-time Matching** - Instant notification when items match
 ✅ **User Dashboard** - View all matched items
